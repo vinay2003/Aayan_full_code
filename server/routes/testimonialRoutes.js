@@ -1,17 +1,16 @@
-const express = require('express');
-const router = express.Router();
-const {
+import express from 'express';
+import {
   getTestimonials,
-  createTestimonial,
+  addTestimonial,
   updateTestimonial,
-  deleteTestimonial,
-  toggleActiveStatus
-} = require('../controllers/testimonialController');
+  deleteTestimonial
+} from '../controllers/testimonialController.js';
 
-router.get('/', getTestimonials);                
-router.post('/', createTestimonial);             
-router.put('/:id', updateTestimonial);           
-router.delete('/:id', deleteTestimonial);        
-router.patch('/:id/toggle', toggleActiveStatus); 
+const router = express.Router();
 
-module.exports = router;
+router.get('/', getTestimonials);
+router.post('/', addTestimonial);
+router.put('/:id', updateTestimonial);
+router.delete('/:id', deleteTestimonial);
+
+export default router;

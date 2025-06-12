@@ -1,9 +1,9 @@
-import express from "express";
-import { getAboutContent, updateAboutContent } from "../controllers/aboutController.js";
+import express from 'express';
+import { getAboutContent, updateAboutContent } from '../controllers/aboutController.js';
 
 const router = express.Router();
 
-router.get("/", getAboutContent);         // GET /api/about
-router.post("/", updateAboutContent);     // POST /api/about
+router.get('/about', getAboutContent);
+router.put('/about', updateAboutContent);
 
 export default router;

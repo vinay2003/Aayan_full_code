@@ -8,9 +8,9 @@ import { AboutSection } from './sections/AboutSection';
 import { ServicesManagement } from './sections/ServicesManagement';
 import { TestimonialsManagement } from './sections/TestimonialsManagement';
 import { ContactEntries } from './sections/ContactEntries';
+import logo from '@/assets/logo.png';
 import {
   LogOut,
-  Layout,
   Image,
   Info,
   Briefcase,
@@ -50,7 +50,7 @@ export const AdminLayout = ({ onLogout }) => {
         style={{ backgroundColor: '#ffffff', borderBottomColor: '#d1d5db' }}
       >
         <div className="flex items-center">
-          <Layout className="h-6 w-6 mr-2" />
+          <img src={logo} alt="logo" className="h-10 w-10"/>
           <h1 className="font-bold text-xl text-[#111827]">Admin Dashboard</h1>
         </div>
         <div className="flex items-center space-x-2">

@@ -33,26 +33,46 @@ export default function ContactSection() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validate()) return;
+  e.preventDefault();
 
-    try {
-      const response = await fetch("http://localhost:5000/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, captcha }),
-      });
+  if (!validate()) return;
 
-      if (!response.ok) throw new Error("Failed to send message");
+  // Optional: Add a loading state (if using)
+  try {
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+    };
 
-      setFormData({ name: "", email: "", message: "" });
-      setCaptcha(null);
-      alert("Message sent successfully!");
-    } catch (error) {
-      console.error("Error sending message:", error);
-      alert("There was an error sending your message. Please try again later.");
+    // Include captcha if available
+    if (captcha) {
+      payload.captcha = captcha;
     }
-  };
+
+    const response = await fetch("http://localhost:4000/api/v1/send/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      const errorMsg = data?.message || "Failed to send message. Please try again.";
+      throw new Error(errorMsg);
+    }
+
+    // Success
+    alert(data?.message || "Message sent successfully!");
+    setFormData({ name: "", email: "", message: "" });
+    setCaptcha(null);
+  } catch (error) {
+    console.error("Submit Error:", error);
+    alert(error.message || "There was an error sending your message. Please try again.");
+  }
+};
+
 
   return (
     <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
@@ -67,8 +87,7 @@ export default function ContactSection() {
           <div>
             <h2 className="text-4xl font-bold mb-4">Get In Touch</h2>
             <p className="text-gray-700 max-w-lg">
-              Ready to transform your business with innovative software solutions?
-              Reach out to us to discuss your project.
+              Ready to transform your business with innovative software solutions? Reach out to us to discuss your project.
             </p>
           </div>
 
@@ -79,10 +98,7 @@ export default function ContactSection() {
               </div>
               <div>
                 <h3 className="font-semibold text-lg mb-1">Our Location</h3>
-                <p className="text-gray-700">
-                  1234 Innovation Way<br />
-                  San Francisco, CA 94103
-                </p>
+                <p className="text-gray-700">1234 Innovation Way<br />San Francisco, CA 94103</p>
               </div>
             </div>
 
@@ -92,10 +108,7 @@ export default function ContactSection() {
               </div>
               <div>
                 <h3 className="font-semibold text-lg mb-1">Call Us</h3>
-                <p className="text-gray-700">
-                  +1 (555) 123-4567<br />
-                  Monday–Friday, 9AM–6PM PST
-                </p>
+                <p className="text-gray-700">+1 (555) 123-4567<br />Monday–Friday, 9AM–6PM PST</p>
               </div>
             </div>
 
@@ -105,10 +118,7 @@ export default function ContactSection() {
               </div>
               <div>
                 <h3 className="font-semibold text-lg mb-1">Email Us</h3>
-                <p className="text-gray-700">
-                  info@aayaninfotech.com<br />
-                  support@aayaninfotech.com
-                </p>
+                <p className="text-gray-700">info@aayaninfotech.com<br />support@aayaninfotech.com</p>
               </div>
             </div>
           </div>

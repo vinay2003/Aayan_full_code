@@ -10,3 +10,51 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+# Frontend - Client Side (React + Vite)
+
+This is the frontend of the full-stack web application built using **React**, **Vite**, **Tailwind CSS**, and several modern UI libraries.
+
+---
+
+## Quick Start
+
+### 1. Navigate to the Frontend Directory
+cd frontend
+
+### 2.  Install Dependencies
+npm install
+
+### 3.  Run the App in Development Mode
+npm run dev
+
+
+### 4.  Build for Production
+npm run build
+
+### 5.  Project Stack
+React 18
+Vite
+Tailwind CSS
+Redux Toolkit
+React Router
+GSAP & Framer Motion
+React Hook Form + Zod
+Radix UI Components
+Axios for API calls
+Swiper.js for sliders
+
+# Project Structure
+client/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── redux/
+│   ├── utils/
+│   └── App.jsx
+├── tailwind.config.js
+└── vite.config.js
+
+

@@ -1,15 +1,10 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const aboutSchema = new mongoose.Schema(
-  {
-    content: {
-      type: String,
-      required: true
-    }
+const aboutSchema = new mongoose.Schema({
+  content: {
+    type: String,
+    required: true,
   },
-  { timestamps: true }
-);
+}, { timestamps: true });
 
-const About = mongoose.model("About", aboutSchema);
-
-export default About;
+export const About = mongoose.model('About', aboutSchema);

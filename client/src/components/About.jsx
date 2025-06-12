@@ -25,7 +25,7 @@ export function About() {
           >
             <div className="relative z-10 rounded-xl overflow-hidden shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+                src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWJvdXQlMjB1c3xlbnwwfHwwfHx8MA%3D%3D"
                 alt="Team at work"
                 className="w-full h-auto object-cover"
               />
